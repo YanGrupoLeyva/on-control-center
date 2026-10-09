@@ -1,0 +1,10 @@
+{
+  "name": "OBJETIVOS 2026 - Sincronizacion Sheets",
+  "nodes": [
+    {"id":"goals-manual","name":"Comprobar acceso a Objetivos","type":"n8n-nodes-base.manualTrigger","typeVersion":1,"position":[260,300],"parameters":{}},
+    {"id":"goals-read","name":"Leer hoja Objetivos 2026","type":"n8n-nodes-base.httpRequest","typeVersion":4.2,"position":[520,300],"parameters":{"url":"https://sheets.googleapis.com/v4/spreadsheets/19aMmwC54gPx7Bzsw4Gh9Kf4XvdlfLIaC_EiUYpBAEO4/values/%27Hoja%201%27!A1%3AG150?valueRenderOption=UNFORMATTED_VALUE","authentication":"predefinedCredentialType","nodeCredentialType":"googleSheetsOAuth2Api","options":{"timeout":20000}}}
+  ],
+  "connections":{"Comprobar acceso a Objetivos":{"main":[[{"node":"Leer hoja Objetivos 2026","type":"main","index":0}]]}},
+  "settings":{"executionOrder":"v1"},
+  "active":false
+}
