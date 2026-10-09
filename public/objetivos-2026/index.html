@@ -1,8 +1,11 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OBJETIVOS 2026 · LEYVAGROUP</title><style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#19253b;background:#f5f7fb}*{box-sizing:border-box}body{margin:0}header{background:#111d33;color:white;padding:20px max(24px,calc((100vw - 1300px)/2));display:flex;justify-content:space-between;align-items:center;gap:20px}header a{color:#b9d3ff;text-decoration:none}h1{margin:4px 0;font-size:26px}h2{font-size:18px;margin:0 0 14px}.sub{color:#64748b;font-size:13px}.wrap{max-width:1300px;margin:26px auto;padding:0 20px}.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}button,select,input,textarea{font:inherit;border:1px solid #d9e0eb;border-radius:9px;padding:9px 12px;background:white;color:#17243c}button{cursor:pointer}button.primary{background:#2563eb;border-color:#2563eb;color:white}button.danger{color:#c22}select{max-width:100%}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat,.panel{background:white;border:1px solid #e2e8f0;border-radius:13px;padding:18px}.stat strong{display:block;font-size:28px;margin-top:4px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.item{border:1px solid #e5eaf1;border-radius:10px;padding:12px;margin:8px 0}.item-top{display:flex;justify-content:space-between;gap:10px}.item strong{font-size:14px}.item small{display:block;color:#64748b;margin-top:5px}.pill{font-size:11px;padding:4px 8px;border-radius:20px;background:#edf2ff;white-space:nowrap}.actions{display:flex;gap:8px;margin-top:9px}.actions button{font-size:12px;padding:5px 9px}.empty{color:#94a3b8;font-size:13px}dialog{border:0;border-radius:16px;padding:24px;width:min(520px,94vw);box-shadow:0 20px 80px #14213d55}dialog::backdrop{background:#0b152c99}form{display:grid;gap:12px}label{display:grid;gap:5px;font-size:13px;font-weight:600}textarea{min-height:75px;resize:vertical}.formactions{display:flex;justify-content:flex-end;gap:8px}.notice{font-size:12px;color:#64748b;margin:14px 0}#weekNav{display:flex;gap:5px;flex-wrap:wrap}#weekNav button.active{background:#172f59;color:white}.hidden{display:none}@media(max-width:800px){.cards{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}header{padding:16px}.wrap{padding:0 12px}}
+
+/* Diseño compacto */
+.wrap{max-width:1480px;margin:14px auto;padding:0 16px}.toolbar{gap:7px;margin-bottom:10px}.toolbar button,.toolbar select{padding:7px 9px;font-size:12px}.stats{gap:8px;margin-bottom:10px}.stat,.panel{padding:11px 13px;border-radius:9px}.stat strong{font-size:21px;margin-top:1px}.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.panel h2{font-size:14px;margin:0 0 7px}.item{padding:8px;margin:5px 0;border-radius:7px}.item strong{font-size:12px}.item small{font-size:11px;margin-top:3px}.actions{margin-top:5px}.actions button{padding:3px 7px;font-size:11px}.pill{font-size:10px;padding:3px 6px}#weekNav{margin-bottom:10px;gap:4px}#weekNav button{padding:5px 9px;font-size:12px}.notice{margin:10px 0}header{padding-top:12px;padding-bottom:12px}header h1{font-size:21px}@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.cards{grid-template-columns:1fr}.wrap{padding:0 9px}.stats{grid-template-columns:repeat(2,1fr)}}
 </style></head><body>
 <header><div><div style="font-size:12px;letter-spacing:2px;color:#91b7ff">LEYVAGROUP / DIRECCIÓN</div><h1>OBJETIVOS 2026</h1><div style="color:#afbed5;font-size:13px">Plan de dirección · S42–S53</div></div><a href="/">← Volver a ON</a></header>
-<main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export">Exportar JSON</button><button id="import">Importar JSON</button><input id="file" type="file" accept=".json,application/json" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Para conservarlos en otro dispositivo, exporta el JSON e impórtalo allí. No hay sincronización multiusuario ni acceso privado configurados.</p></main>
+<main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export">Exportar CSV</button><button id="import">Importar CSV</button><input id="file" type="file" accept=".csv,text/csv" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Para conservarlos en otro dispositivo, exporta el CSV e impórtalo allí. No hay sincronización multiusuario ni acceso privado configurados.</p></main>
 <dialog id="editor"><form id="form"><h2 id="formTitle">Editar objetivo</h2><input id="id" type="hidden"><label>Empresa<select id="fcompany" required></select></label><label>Objetivo<input id="title" required maxlength="220"></label><label>Semana<select id="fweek"></select></label><label>Prioridad<select id="priority"><option>Muy alta</option><option>Alta</option><option>Media</option><option>Baja</option></select></label><label>Estado<select id="status"><option>Pendiente</option><option>En curso</option><option>Bloqueado</option><option>Completado</option></select></label><label>Responsable<input id="owner" placeholder="Persona clave"></label><label>Reunión / fecha<input id="meeting" placeholder="Pendiente de concretar"></label><label>Notas<textarea id="notes"></textarea></label><div class="formactions"><button type="button" id="cancel">Cancelar</button><button class="primary" type="submit">Guardar</button></div></form></dialog>
 <script>
 const companies=["LINMANIA","VULCAN ARCADE GAMES","TECH-ON","CONTACT-ON","ROCKSTAR","LEYVA TRADE","LA MECA DEL MONEDERO","LEYVA REAL ESTATE","LEYVAGROUP"];
@@ -42,8 +45,44 @@ function edit(id){
 $("add").onclick=()=>edit(null);$("cancel").onclick=()=>$("editor").close();
 $("form").onsubmit=e=>{e.preventDefault();const id=$("id").value||"o"+Date.now();const obj={id,company:$("fcompany").value,title:$("title").value.trim(),week:+$("fweek").value,priority:$("priority").value,status:$("status").value,owner:$("owner").value,meeting:$("meeting").value,notes:$("notes").value};if(!obj.title)return;data=data.filter(x=>x.id!==id);data.push(obj);$("editor").close();save()};
 $("company").onchange=render;$("view").onchange=render;
-$("export").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:"application/json"}));a.download="objetivos-2026.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+
+const csvColumns=["id","company","title","week","priority","status","owner","meeting","notes"];
+const csvHeaders=["ID","Empresa","Objetivo","Semana","Prioridad","Estado","Responsable","Reunión","Notas"];
+function csvCell(v){const text=String(v??"");return '"'+text.replace(/"/g,'""')+'"'}
+function parseCSV(text){
+ text=text.replace(/^\\uFEFF/,"");const rows=[];let row=[],field="",quoted=false;
+ for(let i=0;i<text.length;i++){const c=text[i];if(quoted){if(c==='"'&&text[i+1]==='"'){field+='"';i++}else if(c==='"'){quoted=false}else field+=c}
+ else if(c==='"'&&field===""){quoted=true}
+ else if(c==='; '){field+=c}
+ else if(c===';'||c===','){row.push(field);field=""}
+ else if(c==='\\n'||c==='\\r'){if(c==='\\r'&&text[i+1]==='\\n')i++;row.push(field);if(row.some(x=>x!==""))rows.push(row);row=[];field=""}
+ else field+=c}
+ if(quoted)throw Error("Comillas sin cerrar");
+ row.push(field);if(row.some(x=>x!==""))rows.push(row);
+ return rows;
+}
+$("export").onclick=()=>{
+ const lines=[csvHeaders,...data.map(x=>csvColumns.map(k=>x[k]??""))];
+ const csv="\\uFEFF"+lines.map(row=>row.map(csvCell).join(";")).join("\\r\\n");
+ const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+ const a=document.createElement("a");a.href=url;a.download="objetivos-2026.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
 $("import").onclick=()=>$("file").click();
-$("file").onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const arr=JSON.parse(await file.text());if(!Array.isArray(arr)||!arr.every(x=>x&&typeof x.id==="string"&&companies.includes(x.company)&&typeof x.title==="string"&&Number(x.week)>=42&&Number(x.week)<=53))throw Error("Formato no válido");if(confirm("¿Sustituir los objetivos actuales por el archivo importado?")){data=arr;save()}}catch(err){alert("No se pudo importar: "+err.message)}e.target.value=""};
+$("file").onchange=async e=>{
+ const file=e.target.files[0];if(!file)return;
+ try{
+  const rows=parseCSV(await file.text());
+  if(rows.length<2)throw Error("El archivo está vacío");
+  const normalized=rows[0].map(x=>x.trim().toLowerCase());
+  const aliases={id:["id"],company:["empresa","company"],title:["objetivo","title"],week:["semana","week"],priority:["prioridad","priority"],status:["estado","status"],owner:["responsable","owner"],meeting:["reunión","reunion","meeting"],notes:["notas","notes"]};
+  const indexes=csvColumns.map(k=>normalized.findIndex(h=>aliases[k].includes(h)));
+  if(indexes.some(i=>i<0))throw Error("Faltan columnas. Usa el CSV exportado desde el panel.");
+  const arr=rows.slice(1).map((r,i)=>Object.fromEntries(csvColumns.map((k,j)=>[k,r[indexes[j]]??""]))).map((x,i)=>({...x,id:x.id||"csv-"+Date.now()+"-"+i,week:Number(String(x.week).replace(/^S/i,""))}));
+  if(!arr.every(x=>companies.includes(x.company)&&x.title.trim()&&Number.isInteger(x.week)&&x.week>=42&&x.week<=53&&["Pendiente","En curso","Bloqueado","Completado"].includes(x.status)))throw Error("Hay empresas, semanas, estados u objetivos no válidos");
+  if(new Set(arr.map(x=>x.id)).size!==arr.length)throw Error("Hay identificadores duplicados");
+  if(confirm("¿Sustituir los "+data.length+" objetivos actuales por los "+arr.length+" del CSV?")){data=arr;save();alert("CSV importado correctamente")}
+ }catch(err){alert("No se pudo importar: "+err.message)}
+ e.target.value="";
+};
 render();
 </script></body></html>
