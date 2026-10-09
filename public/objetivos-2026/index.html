@@ -31,9 +31,10 @@ function render(){
  $("stats").classList.toggle("hidden",view==="company");
  $("cards").classList.toggle("matrix-mode",view==="company"||view==="week");
  $("add").classList.toggle("hidden",true);
- if(view==="company"){renderMatrix(filter);return;}\n if(view==="week"){renderWeeklyMatrix(filter);return;}
  $("weekNav").innerHTML=Array.from({length:12},(_,i)=>{const w=i+42;return '<button class="'+(selectedWeek===w?'active':'')+'" data-week="'+w+'">S'+w+'</button>'}).join("");
  $("weekNav").querySelectorAll("button").forEach(b=>b.onclick=()=>{selectedWeek=+b.dataset.week;render()});
+ if(view==="company"){renderMatrix(filter);return;}
+ if(view==="week"){renderWeeklyMatrix(filter);return;}
  const scoped=data.filter(x=>!filter||x.company===filter);
  const completed=scoped.filter(x=>x.status==="Completado").length;
  const active=scoped.filter(x=>x.status==="En curso").length;
