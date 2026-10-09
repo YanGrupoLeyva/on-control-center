@@ -3,7 +3,7 @@
 
 /* Diseño compacto */
 .wrap{max-width:1480px;margin:14px auto;padding:0 16px}.toolbar{gap:7px;margin-bottom:10px}.toolbar button,.toolbar select{padding:7px 9px;font-size:12px}.stats{gap:8px;margin-bottom:10px}.stat,.panel{padding:11px 13px;border-radius:9px}.stat strong{font-size:21px;margin-top:1px}.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.panel h2{font-size:14px;margin:0 0 7px}.item{padding:8px;margin:5px 0;border-radius:7px}.item strong{font-size:12px}.item small{font-size:11px;margin-top:3px}.actions{margin-top:5px}.actions button{padding:3px 7px;font-size:11px}.pill{font-size:10px;padding:3px 6px}#weekNav{margin-bottom:10px;gap:4px}#weekNav button{padding:5px 9px;font-size:12px}.notice{margin:10px 0}header{padding-top:12px;padding-bottom:12px}header h1{font-size:21px}@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.cards{grid-template-columns:1fr}.wrap{padding:0 9px}.stats{grid-template-columns:repeat(2,1fr)}}
-</style></head><body>
+.matrix-wrap{overflow-x:auto;background:white;border:1px solid #e2e8f0;border-radius:10px}.matrix{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1050px}.matrix th{position:sticky;top:0;background:#edf2f9;color:#263a5b;font-size:11px;letter-spacing:.03em;text-align:left;padding:9px;border-bottom:1px solid #dce4ef}.matrix th:first-child{width:65px}.matrix th:nth-child(2){width:26%}.matrix td{border-bottom:1px solid #e8edf4;border-right:1px solid #eff2f7;vertical-align:top;padding:3px}.matrix tr:last-child td{border-bottom:0}.matrix .weekcell{font-weight:700;font-size:12px;color:#344968;background:#f7f9fd;text-align:center;padding-top:13px}.matrix textarea{border:1px solid transparent;background:transparent;width:100%;min-height:51px;resize:vertical;font-size:12px;line-height:1.4;padding:6px;border-radius:5px}.matrix textarea:focus{outline:2px solid #93b4fb;background:#fff}.matrix-title{font-size:13px;margin:4px 0 10px}.matrix-hint{font-size:11px;color:#64748b;margin:6px 0 10px}#cards.matrix-mode{display:block}@media(max-width:680px){.matrix{min-width:980px}} </style></head><body>
 <header><div><div style="font-size:12px;letter-spacing:2px;color:#91b7ff">LEYVAGROUP / DIRECCIÓN</div><h1>OBJETIVOS 2026</h1><div style="color:#afbed5;font-size:13px">Plan de dirección · S42–S53</div></div><a href="/">← Volver a ON</a></header>
 <main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export">Exportar CSV</button><button id="import">Importar CSV</button><input id="file" type="file" accept=".csv,text/csv" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Para conservarlos en otro dispositivo, exporta el CSV e impórtalo allí. No hay sincronización multiusuario ni acceso privado configurados.</p></main>
 <dialog id="editor"><form id="form"><h2 id="formTitle">Editar objetivo</h2><input id="id" type="hidden"><label>Empresa<select id="fcompany" required></select></label><label>Objetivo<input id="title" required maxlength="220"></label><label>Semana<select id="fweek"></select></label><label>Prioridad<select id="priority"><option>Muy alta</option><option>Alta</option><option>Media</option><option>Baja</option></select></label><label>Estado<select id="status"><option>Pendiente</option><option>En curso</option><option>Bloqueado</option><option>Completado</option></select></label><label>Responsable<input id="owner" placeholder="Persona clave"></label><label>Reunión / fecha<input id="meeting" placeholder="Pendiente de concretar"></label><label>Notas<textarea id="notes"></textarea></label><div class="formactions"><button type="button" id="cancel">Cancelar</button><button class="primary" type="submit">Guardar</button></div></form></dialog>
@@ -13,6 +13,13 @@ const initial=[{"id":"g0-0","company":"LINMANIA","title":"Visitas comerciales y 
 const key="leyvagroup-objetivos-2026-v1";
 let data;try{const saved=JSON.parse(localStorage.getItem(key));data=Array.isArray(saved)?saved:initial}catch{data=initial}
 let selectedWeek=42;
+const departments=["GROWTH","TALENT","FINANCIAL","PRODUCT","SOCIAL"];
+const matrixKey="leyvagroup-objetivos-2026-matrix-v1";
+let matrixData={};try{matrixData=JSON.parse(localStorage.getItem(matrixKey))||{}}catch{matrixData={}}
+function matrixId(c,w,col){return c+"|"+w+"|"+col}
+function matrixValue(c,w,col){const id=matrixId(c,w,col);if(Object.prototype.hasOwnProperty.call(matrixData,id))return matrixData[id];return col==="Objetivos"?data.filter(x=>x.company===c&&Number(x.week)===w).map(x=>x.title).join("\\n"):""}
+function saveMatrix(){localStorage.setItem(matrixKey,JSON.stringify(matrixData))}
+
 const $=id=>document.getElementById(id);
 const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function save(){localStorage.setItem(key,JSON.stringify(data));render()}
@@ -21,6 +28,10 @@ for(let w=42;w<=53;w++)$("fweek").add(new Option("S"+w,w));
 function render(){
  const filter=$("company").value, view=$("view").value;
  $("weekNav").classList.toggle("hidden",view!=="week");
+ $("stats").classList.toggle("hidden",view==="company");
+ $("cards").classList.toggle("matrix-mode",view==="company");
+ $("add").classList.toggle("hidden",view==="company");
+ if(view==="company"){renderMatrix(filter);return;}
  $("weekNav").innerHTML=Array.from({length:12},(_,i)=>{const w=i+42;return '<button class="'+(selectedWeek===w?'active':'')+'" data-week="'+w+'">S'+w+'</button>'}).join("");
  $("weekNav").querySelectorAll("button").forEach(b=>b.onclick=()=>{selectedWeek=+b.dataset.week;render()});
  const scoped=data.filter(x=>!filter||x.company===filter);
@@ -35,6 +46,11 @@ function render(){
  }).join("");
  document.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>edit(b.dataset.edit));
  document.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{if(confirm("¿Eliminar este objetivo?")){data=data.filter(x=>x.id!==b.dataset.delete);save()}});
+}
+function renderMatrix(filter){
+ const list=filter?[filter]:companies;
+ $("cards").innerHTML=list.map(c=>'<section style="margin-bottom:18px"><h2 class="matrix-title">'+escapeHtml(c)+'</h2><div class="matrix-wrap"><table class="matrix"><thead><tr>'+["Semana","Objetivos",...departments].map(x=>'<th>'+x+'</th>').join("")+'</tr></thead><tbody>'+Array.from({length:12},(_,i)=>{const w=i+42;return '<tr><td class="weekcell">S'+w+'</td>'+["Objetivos",...departments].map(col=>'<td><textarea data-company="'+escapeHtml(c)+'" data-week="'+w+'" data-col="'+col+'" aria-label="'+escapeHtml(c+' S'+w+' '+col)+'" placeholder="—">'+escapeHtml(matrixValue(c,w,col))+'</textarea></td>').join("")+'</tr>'}).join("")+'</tbody></table></div></section>').join("");
+ $("cards").querySelectorAll("textarea").forEach(t=>t.addEventListener("input",()=>{matrixData[matrixId(t.dataset.company,Number(t.dataset.week),t.dataset.col)]=t.value;saveMatrix()}));
 }
 function edit(id){
  const x=data.find(o=>o.id===id)||{id:"",company:$("company").value||companies[0],title:"",week:selectedWeek,priority:"Alta",status:"Pendiente",owner:"",meeting:"",notes:""};
@@ -67,6 +83,15 @@ $("export").onclick=()=>{
  const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
  const a=document.createElement("a");a.href=url;a.download="objetivos-2026.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
+function exportMatrixCSV(){
+ const rows=[["Empresa","Semana","Objetivos",...departments]];
+ for(const c of companies)for(let w=42;w<=53;w++)rows.push([c,"S"+w,...["Objetivos",...departments].map(col=>matrixValue(c,w,col))]);
+ const csv="\\uFEFF"+rows.map(row=>row.map(csvCell).join(";")).join("\\r\\n");
+ const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+ const a=document.createElement("a");a.href=url;a.download="objetivos-2026-matriz.csv";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+const originalExport=$("export").onclick;
+$("export").onclick=()=>$("view").value==="company"?exportMatrixCSV():originalExport();
 $("import").onclick=()=>$("file").click();
 $("file").onchange=async e=>{
  const file=e.target.files[0];if(!file)return;
@@ -75,6 +100,16 @@ $("file").onchange=async e=>{
   if(rows.length<2)throw Error("El archivo está vacío");
   const normalized=rows[0].map(x=>x.trim().toLowerCase());
   const aliases={id:["id"],company:["empresa","company"],title:["objetivo","title"],week:["semana","week"],priority:["prioridad","priority"],status:["estado","status"],owner:["responsable","owner"],meeting:["reunión","reunion","meeting"],notes:["notas","notes"]};
+  if(normalized.includes("empresa")&&normalized.includes("semana")&&normalized.includes("growth")&&normalized.includes("objetivos")){
+   const cols=["Objetivos",...departments];
+   const ix=cols.map(c=>normalized.indexOf(c.toLowerCase()));
+   const ci=normalized.indexOf("empresa"),wi=normalized.indexOf("semana");
+   if(ix.some(i=>i<0))throw Error("Faltan departamentos en el CSV");
+   const incoming={};
+   for(const r of rows.slice(1)){const c=r[ci],w=Number(String(r[wi]).replace(/^S/i,""));if(!companies.includes(c)||!Number.isInteger(w)||w<42||w>53)throw Error("Empresa o semana no válida");cols.forEach((col,j)=>incoming[matrixId(c,w,col)]=r[ix[j]]||"")}
+   if(confirm("¿Sustituir la matriz actual por la del CSV?")){matrixData=incoming;saveMatrix();render();alert("Matriz importada")}
+   e.target.value="";return;
+  }
   const indexes=csvColumns.map(k=>normalized.findIndex(h=>aliases[k].includes(h)));
   if(indexes.some(i=>i<0))throw Error("Faltan columnas. Usa el CSV exportado desde el panel.");
   const arr=rows.slice(1).map((r,i)=>Object.fromEntries(csvColumns.map((k,j)=>[k,r[indexes[j]]??""]))).map((x,i)=>({...x,id:x.id||"csv-"+Date.now()+"-"+i,week:Number(String(x.week).replace(/^S/i,""))}));
