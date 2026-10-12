@@ -3,11 +3,13 @@
 
 /* Diseño compacto */
 .wrap{max-width:1480px;margin:14px auto;padding:0 16px}.toolbar{gap:7px;margin-bottom:10px}.toolbar button,.toolbar select{padding:7px 9px;font-size:12px}.stats{gap:8px;margin-bottom:10px}.stat,.panel{padding:11px 13px;border-radius:9px}.stat strong{font-size:21px;margin-top:1px}.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.panel h2{font-size:14px;margin:0 0 7px}.item{padding:8px;margin:5px 0;border-radius:7px}.item strong{font-size:12px}.item small{font-size:11px;margin-top:3px}.actions{margin-top:5px}.actions button{padding:3px 7px;font-size:11px}.pill{font-size:10px;padding:3px 6px}#weekNav{margin-bottom:10px;gap:4px}#weekNav button{padding:5px 9px;font-size:12px}.notice{margin:10px 0}header{padding-top:12px;padding-bottom:12px}header h1{font-size:21px}@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.cards{grid-template-columns:1fr}.wrap{padding:0 9px}.stats{grid-template-columns:repeat(2,1fr)}}
-.matrix-wrap{overflow-x:auto;background:white;border:1px solid #e2e8f0;border-radius:10px}.matrix{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1050px}.matrix th{position:sticky;top:0;background:#edf2f9;color:#263a5b;font-size:11px;letter-spacing:.03em;text-align:left;padding:9px;border-bottom:1px solid #dce4ef}.matrix th:first-child{width:65px}.matrix th:nth-child(2){width:26%}.matrix td{border-bottom:1px solid #e8edf4;border-right:1px solid #eff2f7;vertical-align:top;padding:3px}.matrix tr:last-child td{border-bottom:0}.matrix .weekcell{font-weight:700;font-size:12px;color:#344968;background:#f7f9fd;text-align:center;padding-top:13px}.matrix textarea{border:1px solid transparent;background:transparent;width:100%;min-height:51px;resize:vertical;font-size:12px;line-height:1.4;padding:6px;border-radius:5px}.matrix textarea:focus{outline:2px solid #93b4fb;background:#fff}.matrix-title{font-size:13px;margin:4px 0 10px}.matrix-hint{font-size:11px;color:#64748b;margin:6px 0 10px}#cards.matrix-mode{display:block}@media(max-width:680px){.matrix{min-width:980px}} .weekly{table-layout:fixed;min-width:1350px}.weekly th:first-child{width:135px}.weekly th:nth-child(2){width:auto}.weekly th{font-size:10px;word-break:break-word}.weekly .weekcell{text-align:left;padding:12px 8px;white-space:nowrap}.weekly textarea{min-height:92px}.weekly td{min-width:135px}@media(max-width:800px){.weekly{min-width:1350px}} .iconbtn{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;padding:7px!important}.iconbtn svg{display:block}.iconbtn:hover{background:#edf2fa}.iconbtn:focus-visible{outline:2px solid #2563eb;outline-offset:2px}</style></head><body>
+.matrix-wrap{overflow-x:auto;background:white;border:1px solid #e2e8f0;border-radius:10px}.matrix{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1050px}.matrix th{position:sticky;top:0;background:#edf2f9;color:#263a5b;font-size:11px;letter-spacing:.03em;text-align:left;padding:9px;border-bottom:1px solid #dce4ef}.matrix th:first-child{width:65px}.matrix th:nth-child(2){width:26%}.matrix td{border-bottom:1px solid #e8edf4;border-right:1px solid #eff2f7;vertical-align:top;padding:3px}.matrix tr:last-child td{border-bottom:0}.matrix .weekcell{font-weight:700;font-size:12px;color:#344968;background:#f7f9fd;text-align:center;padding-top:13px}.matrix textarea{border:1px solid transparent;background:transparent;width:100%;min-height:51px;resize:vertical;font-size:12px;line-height:1.4;padding:6px;border-radius:5px}.matrix textarea:focus{outline:2px solid #93b4fb;background:#fff}.matrix-title{font-size:13px;margin:4px 0 10px}.matrix-hint{font-size:11px;color:#64748b;margin:6px 0 10px}#cards.matrix-mode{display:block}@media(max-width:680px){.matrix{min-width:980px}} .weekly{table-layout:fixed;min-width:1350px}.weekly th:first-child{width:135px}.weekly th:nth-child(2){width:auto}.weekly th{font-size:10px;word-break:break-word}.weekly .weekcell{text-align:left;padding:12px 8px;white-space:nowrap}.weekly textarea{min-height:92px}.weekly td{min-width:135px}@media(max-width:800px){.weekly{min-width:1350px}} .iconbtn{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;padding:7px!important}.iconbtn svg{display:block}.iconbtn:hover{background:#edf2fa}.iconbtn:focus-visible{outline:2px solid #2563eb;outline-offset:2px}.cloud-dialog{max-width:430px}.cloud-dialog p{font-size:13px;color:#64748b}.cloud-dialog input{width:100%}.cloud-row{display:flex;gap:8px;flex-wrap:wrap}.cloud-row button{flex:1}.cloud-status{font-size:12px;color:#64748b;margin-top:6px}.cloud-connected{background:#dff8eb!important;color:#12663a!important;border-color:#a7e5c3!important}</style></head><body>
 <header><div><div style="font-size:12px;letter-spacing:2px;color:#91b7ff">LEYVAGROUP / DIRECCIÓN</div><h1>OBJETIVOS 2026</h1><div style="color:#afbed5;font-size:13px">Plan de dirección · S42–S53</div></div><a href="/">← Volver a ON</a></header>
-<main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export" class="iconbtn" aria-label="Descargar Excel" title="Descargar Excel con todas las empresas"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></button><button id="import" class="iconbtn" aria-label="Subir Excel" title="Importar Excel con todas las empresas"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></button><input id="file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Descarga un Excel con las nueve tablas para editarlo en Google Sheets y vuelve a importarlo desde el icono de subida. No hay sincronización automática entre dispositivos.</p></main>
+<main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export" class="iconbtn" aria-label="Descargar Excel" title="Descargar Excel con todas las empresas"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></button><button id="import" class="iconbtn" aria-label="Subir Excel" title="Importar Excel con todas las empresas"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></button><button id="cloud" class="iconbtn" title="Sincronización Supabase" aria-label="Conectar almacenamiento central">☁</button><input id="file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Descarga un Excel con las nueve tablas para editarlo en Google Sheets y vuelve a importarlo desde el icono de subida. No hay sincronización automática entre dispositivos.</p></main>
 <dialog id="editor"><form id="form"><h2 id="formTitle">Editar objetivo</h2><input id="id" type="hidden"><label>Empresa<select id="fcompany" required></select></label><label>Objetivo<input id="title" required maxlength="220"></label><label>Semana<select id="fweek"></select></label><label>Prioridad<select id="priority"><option>Muy alta</option><option>Alta</option><option>Media</option><option>Baja</option></select></label><label>Estado<select id="status"><option>Pendiente</option><option>En curso</option><option>Bloqueado</option><option>Completado</option></select></label><label>Responsable<input id="owner" placeholder="Persona clave"></label><label>Reunión / fecha<input id="meeting" placeholder="Pendiente de concretar"></label><label>Notas<textarea id="notes"></textarea></label><div class="formactions"><button type="button" id="cancel">Cancelar</button><button class="primary" type="submit">Guardar</button></div></form></dialog>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<dialog id="cloudDialog" class="cloud-dialog"><h2>Sincronización ON</h2><p id="cloudInfo">Inicia sesión con yan@leyvagroup.es para conectar Supabase.</p><div id="cloudLogin"><div class="cloud-row"><button id="sendCode" type="button">Enviar código por correo</button></div><label>Código recibido<input id="otpCode" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="Código de 6 cifras"></label><button id="verifyCode" type="button" class="primary">Verificar código</button></div><div id="cloudLogged" hidden><p id="cloudSummary"></p><button id="migrateCloud" class="primary" type="button">Subir objetivos de este dispositivo</button><button id="refreshCloud" type="button">Leer datos de Supabase</button><button id="logoutCloud" type="button">Cerrar sesión</button></div><div class="cloud-row"><button id="closeCloud" type="button">Cerrar</button></div><div id="cloudMessage" class="cloud-status"></div></dialog>
 <script>
 const companies=["LINMANIA","VULCAN ARCADE GAMES","TECH-ON","CONTACT-ON","ROCKSTAR","LEYVA TRADE","LA MECA DEL MONEDERO","LEYVAGROUP"];
 const initial=[{"id":"g0-0","company":"LINMANIA","title":"Visitas comerciales y crecimiento de locales","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g0-1","company":"LINMANIA","title":"Fiscalizar clientes potenciales","week":47,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g0-2","company":"LINMANIA","title":"Potenciar agentes y competición con Santiago","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g1-0","company":"VULCAN ARCADE GAMES","title":"Cerrar todas las máquinas antes de fin de año","week":42,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g1-1","company":"VULCAN ARCADE GAMES","title":"Viaje a China y selección de proveedores","week":47,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g1-2","company":"VULCAN ARCADE GAMES","title":"Negociar precios y contratos de exclusividad","week":52,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g2-0","company":"TECH-ON","title":"Lanzar aplicación el 15 de diciembre","week":42,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g2-1","company":"TECH-ON","title":"Cerrar acuerdos con FEFM e ITSF","week":52,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g3-0","company":"CONTACT-ON","title":"Captar profesionales y empresas con ventas compatibles","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g3-1","company":"CONTACT-ON","title":"Diseñar y probar reto comercial de 3.000 €","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g4-0","company":"ROCKSTAR","title":"Cerrar conciertos y eventos desde la web","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g4-1","company":"ROCKSTAR","title":"Captar mercado inglés mediante agencias","week":47,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g4-2","company":"ROCKSTAR","title":"Evaluar crear agencia en Inglaterra","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g5-0","company":"LEYVA TRADE","title":"Canal chino: comercial para bazares y expositores","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g5-1","company":"LEYVA TRADE","title":"Norte de Europa: especialista comercial inglés","week":47,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g5-2","company":"LEYVA TRADE","title":"Policía: terminar web, códigos e influencers","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g6-0","company":"LA MECA DEL MONEDERO","title":"Impulsar ventas web mediante redes y embudo","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g6-1","company":"LA MECA DEL MONEDERO","title":"Potenciar productos Leyva en web y tienda","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g7-0","company":"LEYVA REAL ESTATE","title":"Cerrar compras de inmuebles pendientes","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g7-1","company":"LEYVA REAL ESTATE","title":"Formalizar alquileres de negocios a Real Estate","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-0","company":"LEYVAGROUP","title":"Equilibrar equipos y delegar responsabilidades","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-1","company":"LEYVAGROUP","title":"GROWTH: probar equipo y prospección","week":44,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-2","company":"LEYVAGROUP","title":"FINANCIAL: respetar organigrama","week":46,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-3","company":"LEYVAGROUP","title":"PRODUCT: incorporar dos personas de enlace","week":48,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-4","company":"LEYVAGROUP","title":"TALENT: reorganizar y contratar equipo de selección","week":50,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-5","company":"LEYVAGROUP","title":"SOCIAL: campañas, embudos, vídeos IA y automatizaciones","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""}];
@@ -195,6 +197,98 @@ $("file").onchange=async e=>{
  }catch(err){alert("No se pudo importar: "+err.message)}
  e.target.value="";
 };
+
+/* Sincronización opcional: los datos locales permanecen intactos hasta migración confirmada. */
+const cloudUrl="https://bimeyizmvxiafzlncssp.supabase.co";
+const cloudKey="sb_publishable_vteg3xezV0oZcKaGGg0DYQ_l2DOTFIJ";
+let cloudClient=null,cloudReady=false,cloudUser=null,cloudTimer=null,cloudRemoteCount=0;
+const cloudMsg=m=>$("cloudMessage").textContent=m;
+async function cloudInit(){
+ if(!window.supabase){cloudMsg("No se pudo cargar el cliente de Supabase");return}
+ cloudClient=window.supabase.createClient(cloudUrl,cloudKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+ const {data:{session}}=await cloudClient.auth.getSession();
+ if(session)await cloudConnect(session);
+}
+async function cloudConnect(session){
+ cloudUser=session.user;
+ if((cloudUser.email||"").toLowerCase()!=="yan@leyvagroup.es"){await cloudClient.auth.signOut();cloudUser=null;cloudMsg("Esta cuenta no está autorizada");return}
+ const {data,error}=await cloudClient.from("objectives_2026").select("id,company,week,department,content");
+ if(error){cloudMsg("Sin acceso a los objetivos: "+error.message);return}
+ cloudRemoteCount=data.length;
+ $("cloudLogin").hidden=true;$("cloudLogged").hidden=false;
+ $("cloud").classList.add("cloud-connected");
+ if(data.length){
+  // Una base ya inicializada tiene prioridad solo tras autorización; conservar copia local.
+  try{localStorage.setItem(matrixKey+"-backup-"+Date.now(),JSON.stringify(matrixData))}catch{}
+  const remote={};for(const r of data)remote[matrixId(r.company,r.week,r.department)]=r.content;
+  matrixData=remote;saveMatrix();render();cloudReady=true;
+  $("cloudSummary").textContent=data.length+" celdas sincronizadas. Los cambios se guardarán en Supabase.";
+  $("migrateCloud").hidden=true;
+ }else{
+  cloudReady=false;
+  $("cloudSummary").textContent="Base central vacía. Desde el portátil que contiene tus cambios, pulsa «Subir objetivos de este dispositivo». No hagas la migración inicial desde el móvil.";
+  $("migrateCloud").hidden=false;
+ }
+ cloudMsg("Conexión autorizada.");
+}
+$("cloud").onclick=()=>{$("cloudDialog").showModal();cloudMsg("");if(!cloudClient)cloudInit()};
+$("closeCloud").onclick=()=>$("cloudDialog").close();
+$("sendCode").onclick=async()=>{
+ if(!cloudClient)await cloudInit();if(!cloudClient)return;
+ const {error}=await cloudClient.auth.signInWithOtp({email:"yan@leyvagroup.es",options:{shouldCreateUser:true}});
+ cloudMsg(error?"No se pudo enviar: "+error.message:"Comprueba el correo yan@leyvagroup.es e introduce el código recibido.");
+};
+$("verifyCode").onclick=async()=>{
+ if(!cloudClient)await cloudInit();if(!cloudClient)return;
+ const token=$("otpCode").value.trim();
+ const {data,error}=await cloudClient.auth.verifyOtp({email:"yan@leyvagroup.es",token,type:"email"});
+ if(error){cloudMsg("Código no válido: "+error.message);return}
+ await cloudConnect(data.session);
+};
+$("migrateCloud").onclick=async()=>{
+ if(!cloudUser||cloudReady)return;
+ if(!confirm("¿Subir los objetivos de ESTE navegador a Supabase? Comprueba que estás en el portátil con la información correcta."))return;
+ const records=[];
+ for(const company of companies)for(let week=42;week<=53;week++)for(const department of ["DIRECTOR DEL NEGOCIO",...departments]){
+  const id=matrixId(company,week,department);
+  records.push({id,company,week,department,content:matrixValue(company,week,department),updated_by:cloudUser.id});
+ }
+ cloudMsg("Subiendo "+records.length+" celdas...");
+ for(let i=0;i<records.length;i+=100){
+  const {error}=await cloudClient.from("objectives_2026").upsert(records.slice(i,i+100),{onConflict:"company,week,department"});
+  if(error){cloudMsg("Error en la migración: "+error.message);return}
+ }
+ cloudReady=true;cloudRemoteCount=records.length;
+ $("migrateCloud").hidden=true;$("cloudSummary").textContent="Migración completada: "+records.length+" celdas. Sincronización activa.";
+ cloudMsg("Objetivos guardados en Supabase.");
+};
+$("refreshCloud").onclick=async()=>{
+ if(!cloudClient||!cloudUser)return;
+ const {data,error}=await cloudClient.from("objectives_2026").select("id,company,week,department,content");
+ if(error){cloudMsg(error.message);return}
+ if(!data.length){cloudMsg("La base está vacía. No se han reemplazado los datos locales.");return}
+ const remote={};for(const r of data)remote[matrixId(r.company,r.week,r.department)]=r.content;
+ matrixData=remote;saveMatrix();render();cloudReady=true;cloudMsg("Actualizado desde Supabase.");
+};
+$("logoutCloud").onclick=async()=>{
+ if(cloudClient)await cloudClient.auth.signOut();cloudReady=false;cloudUser=null;
+ $("cloud").classList.remove("cloud-connected");$("cloudLogin").hidden=false;$("cloudLogged").hidden=true;cloudMsg("Sesión cerrada.");
+};
+async function cloudSaveCell(t){
+ if(!cloudReady||!cloudClient||!cloudUser)return;
+ const company=t.dataset.company,week=Number(t.dataset.week),department=t.dataset.col;
+ if(!company||!department)return;
+ const content=t.value,id=matrixId(company,week,department);
+ const {error}=await cloudClient.from("objectives_2026").upsert({id,company,week,department,content,updated_by:cloudUser.id},{onConflict:"company,week,department"});
+ if(error)cloudMsg("No se pudo guardar: "+error.message);
+}
+document.addEventListener("input",e=>{
+ const t=e.target;
+ if(t.matches&&t.matches("#cards textarea[data-company][data-week][data-col]")&&cloudReady){
+  clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>cloudSaveCell(t),650);
+ }
+},true);
+cloudInit().catch(e=>cloudMsg("Error al conectar: "+e.message));
 
 render();
 </script></body></html>
