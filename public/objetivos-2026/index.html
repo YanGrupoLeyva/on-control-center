@@ -166,7 +166,10 @@ $("export").onclick=()=>{
  XLSX.utils.book_append_sheet(wb,ws,"OBJETIVOS 2026");
  XLSX.writeFile(wb,"LEYVAGROUP_OBJETIVOS_2026.xlsx");
 };
-$("import").onclick=()=>$("file").click();
+$("import").onclick=()=>{
+ if(!cloudClient||!cloudUser){$("cloudDialog").showModal();cloudMsg("Inicia sesión antes de importar el Excel para guardarlo en Supabase.");return}
+ $("file").click();
+};
 $("file").onchange=async e=>{
  const file=e.target.files[0];if(!file)return;
  try{
@@ -192,10 +195,14 @@ $("file").onchange=async e=>{
   }
   if(!loaded)throw Error("No se encontraron empresas y semanas válidas");
   if(confirm("¿Importar "+loaded+" filas semanales desde Excel? Se reemplazarán las celdas de las empresas incluidas. Haz antes una copia de seguridad.")){
-   Object.assign(matrixData,incoming);saveMatrix();render();alert("Excel importado correctamente");
+   $("import").disabled=true;
+   cloudMsg("Guardando Excel en Supabase...");
+   await cloudImportMatrix(incoming);
+   Object.assign(matrixData,incoming);saveMatrix();render();
+   alert("Excel importado y guardado en Supabase. En los demás dispositivos, recarga la página con la sesión iniciada o pulsa «Leer datos de Supabase».");
   }
  }catch(err){alert("No se pudo importar: "+err.message)}
- e.target.value="";
+ $("import").disabled=false;e.target.value="";
 };
 
 /* Sincronización opcional: los datos locales permanecen intactos hasta migración confirmada. */
@@ -274,6 +281,25 @@ $("logoutCloud").onclick=async()=>{
  if(cloudClient)await cloudClient.auth.signOut();cloudReady=false;cloudUser=null;
  $("cloud").classList.remove("cloud-connected");$("cloudLogin").hidden=false;$("cloudLogged").hidden=true;cloudMsg("Sesión cerrada.");
 };
+async function cloudImportMatrix(incoming){
+ if(!cloudClient||!cloudUser)throw Error("Inicia sesión con Google antes de importar el Excel.");
+ const records=Object.entries(incoming).map(([id,content])=>{
+  const [company,week,department]=id.split("|");
+  return {id,company,week:Number(week),department,content,updated_by:cloudUser.id};
+ });
+ // Una sola petición: todas las celdas del Excel se guardan juntas o ninguna.
+ const {data:saved,error}=await cloudClient.from("objectives_2026")
+  .upsert(records,{onConflict:"company,week,department"}).select("id,content");
+ if(error)throw Error("No se ha guardado el Excel en Supabase: "+error.message);
+ const verified=new Map((saved||[]).map(r=>[r.id,r.content]));
+ if(records.some(r=>!verified.has(r.id)||verified.get(r.id)!==r.content))
+  throw Error("No se pudo confirmar el guardado completo. Conserva el Excel y vuelve a consultar Supabase.");
+ cloudReady=true;
+ $("migrateCloud").hidden=true;
+ $("cloudSummary").textContent=records.length+" celdas importadas y confirmadas en Supabase.";
+ cloudMsg("Excel guardado en Supabase.");
+ document.querySelector(".notice").textContent="Excel guardado en Supabase. En otros dispositivos, recarga la página con la sesión iniciada o pulsa «Leer datos de Supabase».";
+}
 async function cloudSaveCell(t){
  if(!cloudReady||!cloudClient||!cloudUser)return;
  const company=t.dataset.company,week=Number(t.dataset.week),department=t.dataset.col;
