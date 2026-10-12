@@ -5,8 +5,9 @@
 .wrap{max-width:1480px;margin:14px auto;padding:0 16px}.toolbar{gap:7px;margin-bottom:10px}.toolbar button,.toolbar select{padding:7px 9px;font-size:12px}.stats{gap:8px;margin-bottom:10px}.stat,.panel{padding:11px 13px;border-radius:9px}.stat strong{font-size:21px;margin-top:1px}.cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.panel h2{font-size:14px;margin:0 0 7px}.item{padding:8px;margin:5px 0;border-radius:7px}.item strong{font-size:12px}.item small{font-size:11px;margin-top:3px}.actions{margin-top:5px}.actions button{padding:3px 7px;font-size:11px}.pill{font-size:10px;padding:3px 6px}#weekNav{margin-bottom:10px;gap:4px}#weekNav button{padding:5px 9px;font-size:12px}.notice{margin:10px 0}header{padding-top:12px;padding-bottom:12px}header h1{font-size:21px}@media(max-width:1050px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.cards{grid-template-columns:1fr}.wrap{padding:0 9px}.stats{grid-template-columns:repeat(2,1fr)}}
 .matrix-wrap{overflow-x:auto;background:white;border:1px solid #e2e8f0;border-radius:10px}.matrix{width:100%;border-collapse:collapse;table-layout:fixed;min-width:1050px}.matrix th{position:sticky;top:0;background:#edf2f9;color:#263a5b;font-size:11px;letter-spacing:.03em;text-align:left;padding:9px;border-bottom:1px solid #dce4ef}.matrix th:first-child{width:65px}.matrix th:nth-child(2){width:26%}.matrix td{border-bottom:1px solid #e8edf4;border-right:1px solid #eff2f7;vertical-align:top;padding:3px}.matrix tr:last-child td{border-bottom:0}.matrix .weekcell{font-weight:700;font-size:12px;color:#344968;background:#f7f9fd;text-align:center;padding-top:13px}.matrix textarea{border:1px solid transparent;background:transparent;width:100%;min-height:51px;resize:vertical;font-size:12px;line-height:1.4;padding:6px;border-radius:5px}.matrix textarea:focus{outline:2px solid #93b4fb;background:#fff}.matrix-title{font-size:13px;margin:4px 0 10px}.matrix-hint{font-size:11px;color:#64748b;margin:6px 0 10px}#cards.matrix-mode{display:block}@media(max-width:680px){.matrix{min-width:980px}} .weekly{table-layout:fixed;min-width:1350px}.weekly th:first-child{width:135px}.weekly th:nth-child(2){width:auto}.weekly th{font-size:10px;word-break:break-word}.weekly .weekcell{text-align:left;padding:12px 8px;white-space:nowrap}.weekly textarea{min-height:92px}.weekly td{min-width:135px}@media(max-width:800px){.weekly{min-width:1350px}} .iconbtn{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;padding:7px!important}.iconbtn svg{display:block}.iconbtn:hover{background:#edf2fa}.iconbtn:focus-visible{outline:2px solid #2563eb;outline-offset:2px}</style></head><body>
 <header><div><div style="font-size:12px;letter-spacing:2px;color:#91b7ff">LEYVAGROUP / DIRECCIÓN</div><h1>OBJETIVOS 2026</h1><div style="color:#afbed5;font-size:13px">Plan de dirección · S42–S53</div></div><a href="/">← Volver a ON</a></header>
-<main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export" class="iconbtn" aria-label="Descargar CSV o ZIP" title="Descargar CSV / ZIP"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></button><button id="import" class="iconbtn" aria-label="Subir CSV" title="Subir CSV"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></button><input id="file" type="file" accept=".csv,text/csv" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Para conservarlos en otro dispositivo, exporta un CSV por empresa o el ZIP con las nueve tablas. También puedes importar un único CSV exportado desde el Google Sheets con todas las tablas. No hay sincronización multiusuario ni acceso privado configurados.</p></main>
+<main class="wrap"><div class="toolbar"><select id="company"><option value="">Todas las empresas</option></select><select id="view"><option value="week">Vista semanal</option><option value="company">Vista por empresa</option></select><button class="primary" id="add">+ Nuevo objetivo</button><button id="export" class="iconbtn" aria-label="Descargar Excel" title="Descargar Excel con todas las empresas"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></button><button id="import" class="iconbtn" aria-label="Subir Excel" title="Importar Excel con todas las empresas"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg></button><input id="file" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden></div><div id="weekNav"></div><div class="stats" id="stats"></div><div id="cards" class="cards"></div><p class="notice">Los cambios se guardan en este navegador. Descarga un Excel con las nueve tablas para editarlo en Google Sheets y vuelve a importarlo desde el icono de subida. No hay sincronización automática entre dispositivos.</p></main>
 <dialog id="editor"><form id="form"><h2 id="formTitle">Editar objetivo</h2><input id="id" type="hidden"><label>Empresa<select id="fcompany" required></select></label><label>Objetivo<input id="title" required maxlength="220"></label><label>Semana<select id="fweek"></select></label><label>Prioridad<select id="priority"><option>Muy alta</option><option>Alta</option><option>Media</option><option>Baja</option></select></label><label>Estado<select id="status"><option>Pendiente</option><option>En curso</option><option>Bloqueado</option><option>Completado</option></select></label><label>Responsable<input id="owner" placeholder="Persona clave"></label><label>Reunión / fecha<input id="meeting" placeholder="Pendiente de concretar"></label><label>Notas<textarea id="notes"></textarea></label><div class="formactions"><button type="button" id="cancel">Cancelar</button><button class="primary" type="submit">Guardar</button></div></form></dialog>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script>
 const companies=["LINMANIA","VULCAN ARCADE GAMES","TECH-ON","CONTACT-ON","ROCKSTAR","LEYVA TRADE","LA MECA DEL MONEDERO","LEYVAGROUP"];
 const initial=[{"id":"g0-0","company":"LINMANIA","title":"Visitas comerciales y crecimiento de locales","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g0-1","company":"LINMANIA","title":"Fiscalizar clientes potenciales","week":47,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g0-2","company":"LINMANIA","title":"Potenciar agentes y competición con Santiago","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g1-0","company":"VULCAN ARCADE GAMES","title":"Cerrar todas las máquinas antes de fin de año","week":42,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g1-1","company":"VULCAN ARCADE GAMES","title":"Viaje a China y selección de proveedores","week":47,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g1-2","company":"VULCAN ARCADE GAMES","title":"Negociar precios y contratos de exclusividad","week":52,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g2-0","company":"TECH-ON","title":"Lanzar aplicación el 15 de diciembre","week":42,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g2-1","company":"TECH-ON","title":"Cerrar acuerdos con FEFM e ITSF","week":52,"status":"Pendiente","priority":"Muy alta","owner":"","meeting":"","notes":""},{"id":"g3-0","company":"CONTACT-ON","title":"Captar profesionales y empresas con ventas compatibles","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g3-1","company":"CONTACT-ON","title":"Diseñar y probar reto comercial de 3.000 €","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g4-0","company":"ROCKSTAR","title":"Cerrar conciertos y eventos desde la web","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g4-1","company":"ROCKSTAR","title":"Captar mercado inglés mediante agencias","week":47,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g4-2","company":"ROCKSTAR","title":"Evaluar crear agencia en Inglaterra","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g5-0","company":"LEYVA TRADE","title":"Canal chino: comercial para bazares y expositores","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g5-1","company":"LEYVA TRADE","title":"Norte de Europa: especialista comercial inglés","week":47,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g5-2","company":"LEYVA TRADE","title":"Policía: terminar web, códigos e influencers","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g6-0","company":"LA MECA DEL MONEDERO","title":"Impulsar ventas web mediante redes y embudo","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g6-1","company":"LA MECA DEL MONEDERO","title":"Potenciar productos Leyva en web y tienda","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g7-0","company":"LEYVA REAL ESTATE","title":"Cerrar compras de inmuebles pendientes","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g7-1","company":"LEYVA REAL ESTATE","title":"Formalizar alquileres de negocios a Real Estate","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-0","company":"LEYVAGROUP","title":"Equilibrar equipos y delegar responsabilidades","week":42,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-1","company":"LEYVAGROUP","title":"GROWTH: probar equipo y prospección","week":44,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-2","company":"LEYVAGROUP","title":"FINANCIAL: respetar organigrama","week":46,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-3","company":"LEYVAGROUP","title":"PRODUCT: incorporar dos personas de enlace","week":48,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-4","company":"LEYVAGROUP","title":"TALENT: reorganizar y contratar equipo de selección","week":50,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""},{"id":"g8-5","company":"LEYVAGROUP","title":"SOCIAL: campañas, embudos, vídeos IA y automatizaciones","week":52,"status":"Pendiente","priority":"Alta","owner":"","meeting":"","notes":""}];
@@ -145,70 +146,55 @@ function exportMatrixCSV(){
  if(c)downloadBlob(csvFileName(c),new Blob([csvForCompany(c)],{type:"text/csv;charset=utf-8"}));
  else zipCompanies();
 }
-const originalExport=$("export").onclick;
-$("export").onclick=()=>$("view").value==="company"?exportMatrixCSV():originalExport();
+
+function matrixRowsForExcel(){
+ const rows=[];
+ for(const c of companies){
+  rows.push([c,"","","","","",""]);
+  rows.push(["Semana","DIRECTOR DEL NEGOCIO","GROWTH","TALENT","FINANCIAL","PRODUCT","SOCIAL"]);
+  for(let w=42;w<=53;w++)rows.push([w,...["DIRECTOR DEL NEGOCIO",...departments].map(col=>matrixValue(c,w,col))]);
+  rows.push(["","","","","","",""]);
+ }
+ return rows;
+}
+$("export").onclick=()=>{
+ if(typeof XLSX==="undefined"){alert("No se ha podido cargar el módulo Excel. Comprueba la conexión y vuelve a intentarlo.");return}
+ const wb=XLSX.utils.book_new(),ws=XLSX.utils.aoa_to_sheet(matrixRowsForExcel());
+ ws["!cols"]=[{wch:11},{wch:43},{wch:37},{wch:37},{wch:37},{wch:37},{wch:37}];
+ XLSX.utils.book_append_sheet(wb,ws,"OBJETIVOS 2026");
+ XLSX.writeFile(wb,"LEYVAGROUP_OBJETIVOS_2026.xlsx");
+};
 $("import").onclick=()=>$("file").click();
 $("file").onchange=async e=>{
  const file=e.target.files[0];if(!file)return;
  try{
-  const rows=parseCSV(await file.text());
-  if(rows.length<2)throw Error("El archivo está vacío");
-  // Formato Google Sheets: una tabla por empresa en el mismo CSV
-  if(rows.some(r=>companies.includes((r[0]||"").trim()))){
-   const incoming={};let current=null,header=null,loaded=0;
-   const columns=["DIRECTOR DEL NEGOCIO",...departments];
-   for(const row of rows){
-    const first=(row[0]||"").trim();
-    if(companies.includes(first)){current=first;header=null;continue}
-    if(!current)continue;
-    if(first.toLowerCase()==="semana"){
-     header=columns.map(c=>row.findIndex(v=>(v||"").trim().toLowerCase()===c.toLowerCase()||(c==="DIRECTOR DEL NEGOCIO"&&(v||"").trim().toLowerCase()==="objetivos")));
-     if(header.some(i=>i<0))throw Error("Faltan columnas en "+current);
-     continue;
-    }
-    if(!header||!/^S?(4[2-9]|5[0-3])$/i.test(first))continue;
-    const w=Number(first.replace(/^S/i,""));
-    columns.forEach((col,i)=>incoming[matrixId(current,w,col)]=row[header[i]]||"");loaded++;
+  if(typeof XLSX==="undefined")throw Error("No se ha cargado el módulo Excel");
+  const wb=XLSX.read(await file.arrayBuffer(),{type:"array"});
+  if(wb.SheetNames.length!==1)throw Error("El Excel debe contener una sola hoja con las tablas por empresa");
+  const rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:"",raw:false});
+  const cols=["DIRECTOR DEL NEGOCIO",...departments];
+  let current=null,header=null,loaded=0;const incoming={};
+  for(const row of rows){
+   const first=String(row[0]??"").trim();
+   if(companies.includes(first)){current=first;header=null;continue}
+   if(!current)continue;
+   if(first.toLowerCase()==="semana"){
+    header=cols.map(col=>row.findIndex(v=>String(v??"").trim().toUpperCase()===col||col==="DIRECTOR DEL NEGOCIO"&&String(v??"").trim().toUpperCase()==="OBJETIVOS"));
+    if(header.some(i=>i<0))throw Error("Faltan columnas en "+current);
+    continue;
    }
-   if(!loaded)throw Error("No se encontraron semanas válidas");
-   if(confirm("¿Importar "+loaded+" filas semanales del Google Sheets? Se actualizarán las empresas incluidas y se conservarán las demás.")){
-    Object.assign(matrixData,incoming);saveMatrix();render();alert("Planificación importada correctamente");
-   }
-   e.target.value="";return;
+   if(!header||!/^S?(4[2-9]|5[0-3])$/i.test(first))continue;
+   const week=Number(first.replace(/^S/i,""));
+   for(let i=0;i<cols.length;i++)incoming[matrixId(current,week,cols[i])]=String(row[header[i]]??"");
+   loaded++;
   }
-  const normalized=rows[0].map(x=>x.trim().toLowerCase());
-  const aliases={id:["id"],company:["empresa","company"],title:["objetivo","title"],week:["semana","week"],priority:["prioridad","priority"],status:["estado","status"],owner:["responsable","owner"],meeting:["reunión","reunion","meeting"],notes:["notas","notes"]};
-  if(normalized.includes("semana")&&normalized.includes("growth")&&!normalized.includes("empresa")){
-   const selected=$("company").value;
-   if(!selected)throw Error("Selecciona primero una empresa para importar su CSV individual.");
-   const cols=["DIRECTOR DEL NEGOCIO",...departments],ix=cols.map(c=>normalized.indexOf(c.toLowerCase())>=0?normalized.indexOf(c.toLowerCase()):c==="DIRECTOR DEL NEGOCIO"?normalized.indexOf("objetivos"):-1),wi=normalized.indexOf("semana");
-   if(ix.some(i=>i<0))throw Error("Faltan columnas de departamentos");
-   const incoming={};
-   for(const r of rows.slice(1)){const w=Number(String(r[wi]).replace(/^S/i,""));if(!Number.isInteger(w)||w<42||w>53)throw Error("Semana fuera de rango");cols.forEach((col,j)=>incoming[matrixId(selected,w,col)]=r[ix[j]]||"")}
-   if(confirm("¿Importar la tabla de "+selected+"? Las demás empresas no se modificarán.")){
-    for(let w=42;w<=53;w++)for(const col of cols)delete matrixData[matrixId(selected,w,col)];
-    Object.assign(matrixData,incoming);saveMatrix();render();alert("CSV importado para "+selected);
-   }
-   e.target.value="";return;
+  if(!loaded)throw Error("No se encontraron empresas y semanas válidas");
+  if(confirm("¿Importar "+loaded+" filas semanales desde Excel? Se reemplazarán las celdas de las empresas incluidas. Haz antes una copia de seguridad.")){
+   Object.assign(matrixData,incoming);saveMatrix();render();alert("Excel importado correctamente");
   }
-  if(normalized.includes("empresa")&&normalized.includes("semana")&&normalized.includes("growth")&&(normalized.includes("director del negocio")||normalized.includes("objetivos"))){
-   const cols=["DIRECTOR DEL NEGOCIO",...departments];
-   const ix=cols.map(c=>normalized.indexOf(c.toLowerCase())>=0?normalized.indexOf(c.toLowerCase()):c==="DIRECTOR DEL NEGOCIO"?normalized.indexOf("objetivos"):-1);
-   const ci=normalized.indexOf("empresa"),wi=normalized.indexOf("semana");
-   if(ix.some(i=>i<0))throw Error("Faltan departamentos en el CSV");
-   const incoming={};
-   for(const r of rows.slice(1)){const c=r[ci],w=Number(String(r[wi]).replace(/^S/i,""));if(!companies.includes(c)||!Number.isInteger(w)||w<42||w>53)throw Error("Empresa o semana no válida");cols.forEach((col,j)=>incoming[matrixId(c,w,col)]=r[ix[j]]||"")}
-   if(confirm("¿Sustituir la matriz actual por la del CSV?")){matrixData=incoming;saveMatrix();render();alert("Matriz importada")}
-   e.target.value="";return;
-  }
-  const indexes=csvColumns.map(k=>normalized.findIndex(h=>aliases[k].includes(h)));
-  if(indexes.some(i=>i<0))throw Error("Faltan columnas. Usa el CSV exportado desde el panel.");
-  const arr=rows.slice(1).map((r,i)=>Object.fromEntries(csvColumns.map((k,j)=>[k,r[indexes[j]]??""]))).map((x,i)=>({...x,id:x.id||"csv-"+Date.now()+"-"+i,week:Number(String(x.week).replace(/^S/i,""))}));
-  if(!arr.every(x=>companies.includes(x.company)&&x.title.trim()&&Number.isInteger(x.week)&&x.week>=42&&x.week<=53&&["Pendiente","En curso","Bloqueado","Completado"].includes(x.status)))throw Error("Hay empresas, semanas, estados u objetivos no válidos");
-  if(new Set(arr.map(x=>x.id)).size!==arr.length)throw Error("Hay identificadores duplicados");
-  if(confirm("¿Sustituir los "+data.length+" objetivos actuales por los "+arr.length+" del CSV?")){data=arr;save();alert("CSV importado correctamente")}
  }catch(err){alert("No se pudo importar: "+err.message)}
  e.target.value="";
 };
+
 render();
 </script></body></html>
